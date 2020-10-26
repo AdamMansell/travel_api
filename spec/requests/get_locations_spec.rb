@@ -20,4 +20,9 @@ describe "get one location route", :type => :request do
     it "does not return a quote and returns an error message if ID doesnt exist." do
         expect(response).to have_http_status(:not_found)
     end
+
+    it 'returns the number of locations' do
+        get '/locations'
+        expect(JSON.parse(response.body).size).to eq(0)
+    end
 end 

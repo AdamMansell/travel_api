@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
     end
 
     def create
-      @location= Location.create!(location_params)
+      @location = Location.new(location_params)
       json_response(@location) 
     end
 
@@ -29,6 +29,7 @@ class LocationsController < ApplicationController
           render status: 200, json: {
               message: "This location has been deleted sucessfully."
           }
+      end
     end
   private
 
@@ -38,5 +39,5 @@ class LocationsController < ApplicationController
 
     def json_response(object, status= :ok)
       render json: object, status: status
-  end
+    end
 end

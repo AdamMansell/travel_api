@@ -32,9 +32,6 @@ class ReviewsController < ApplicationController
         }
     end
   end
-
-  def findbylocation
-  end
 private
 
   def review_params

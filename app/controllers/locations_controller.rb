@@ -1,8 +1,21 @@
 class LocationsController < ApplicationController
+# WE THINK THIS IS THE PROBLEM CODE
+
+        
 
     def index
-      @locations = Location.all
-      json_response(@locations)
+      country = params[:country]
+      # json_response(@locations)
+      if country
+        
+        # @review = Review.find(country)
+        # @location = Location.find_by_country
+        @locations = Location.search(params[:country])
+        json_response(@locations)
+      else
+        @locations = Location.all
+        json_response(@locations)
+      end
     end
 
     def show
@@ -16,7 +29,7 @@ class LocationsController < ApplicationController
     end
 
     def update
-      @location = Location.find(params[:id])
+      # @location = Location.find(params[:id])
       if @location.update!(location_params)
           render status: 200, json: {
           message: "This location has been updated successfully."
@@ -30,6 +43,15 @@ class LocationsController < ApplicationController
               message: "This location has been deleted sucessfully."
           }
       end
+    end
+  
+    def self.find_by_country(name)
+      @location = Location.search(name)
+      locations = []
+      @location.each do |element|
+        locations.push(element)
+      end
+      locations
     end
   private
 

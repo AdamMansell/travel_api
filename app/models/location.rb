@@ -2,7 +2,12 @@
 
 class Location < ApplicationRecord
   has_many :reviews, dependent: :destroy
-  scope :search, ->(country_parameter) { where('country ilike ?', "%#{country_parameter}%") }
+  scope :search, ->(country) { where('country ilike ?', "%#{country}%") }
+
+  # Location.search("canada") => return all teh locations that matches 'canada' country
+  # filtering the locations data by the country name
+  # Location.where(country: 'abcdcanadaishabcd')
+  # Location.where(country: 'Canadaa')
 
   # scope :find_by_country, -> {where("country == Location.country")}
 

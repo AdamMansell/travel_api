@@ -4,10 +4,7 @@ class LocationsController < ApplicationController
   # WE THINK THIS IS THE PROBLEM CODE
 
   def index
-    country = params[:country]
-    # json_response(@locations)
-    if country
-
+    if params[:country].present?
       # @review = Review.find(country)
       # @location = Location.find_by_country
       @locations = Location.search(params[:country])

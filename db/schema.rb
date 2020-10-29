@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,22 +12,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_170318) do
-
+ActiveRecord::Schema.define(version: 20_201_027_170_318) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "locations", force: :cascade do |t|
-    t.string "country"
-    t.string "city"
+  create_table 'locations', force: :cascade do |t|
+    t.string 'country'
+    t.string 'city'
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.string "review_text"
-    t.integer "location_id"
-    t.integer "rating"
-    t.string "user_name"
+  create_table 'reviews', force: :cascade do |t|
+    t.string 'review_text'
+    t.integer 'location_id'
+    t.integer 'rating'
+    t.string 'user_name'
   end
 
-  add_foreign_key "reviews", "locations"
+  add_foreign_key 'reviews', 'locations'
 end

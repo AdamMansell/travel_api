@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'faker'
 
 class Seed
-
   def self.begin
     seed = Seed.new
     seed.generate_locations
@@ -15,8 +16,8 @@ class Seed
         country: Faker::Address.country,
         city: Faker::Address.city
       )
-      review = Review.create!(:rating => 10,:review_text => "I saw #{Faker::TvShows::BreakingBad.character} there", :location_id => location.id, :user_name => "Jimbo" )
-      puts "created #{:review_text}"
+      review = Review.create!(rating: 10, review_text: "I saw #{Faker::TvShows::BreakingBad.character} there", location_id: location.id, user_name: 'Jimbo')
+      puts 'created review_text'
       puts "Location #{i}: City is #{location.city} in the country of '#{location.country}'."
     end
   end
@@ -27,7 +28,6 @@ class Seed
   #     puts "created #{review_text}"
   #   end
   # end
-
 end
 
 Seed.begin

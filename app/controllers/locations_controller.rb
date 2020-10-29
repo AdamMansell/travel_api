@@ -5,9 +5,14 @@ class LocationsController < ApplicationController
 
   def index
     if params[:country].present?
-      # @review = Review.find(country)
-      # @location = Location.find_by_country
-      @locations = Location.search(params[:country])
+      @locations = Location.search_by_country(params[:country])
+    end
+
+    if params[:city].present?
+      @locations = (@locations || Location).search_by_city(params[:city])
+    end
+
+    if params[:country].present? || params[:city].present?
       json_response(@locations)
     else
       @locations = Location.all
